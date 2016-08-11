@@ -1,0 +1,41 @@
+# by yrd <swai-sadf@163.com>
+
+项目名称修改：
+查找需要修改的文件：grep -r "demo" *|awk -F ":" '{print $1}'|sort -u|grep -v "auto_load.php"
+vim编辑文件执行替换： :1,$ s/demo/xxx/g
+
+项目建议：
+1、最好使用地址 /home/q/system/xxx
+2、nginx log 写到  /data/ 目录之下
+3、使用redis作缓存
+4、nginx配置文件使用软连方式 ln -s path/config/httpd/httpd_conf.xxx.php xxx.conf
+
+项目编译(每次新增、删除文件都需要执行后才能生效)：
+sh project/autoload_builder.sh
+
+nginx 配置文件：
+config/httpd/httpd_conf.xxx.php
+
+入口文件：
+src/www/index.php
+
+业务配置文件：
+src/include/config.inc.php
+
+业务逻辑层：
+src/application/controllers/xxxController.php
+
+数据操作逻辑层：
+src/application/models/service/xxxModel.php
+
+数据对象抽象层：
+src/application/models/dao/xxxDao.php
+
+公用操作工具封装层：
+src/application/models/integration/xxx.php
+
+计划任务层：
+src/tools/crontab_xxx.php
+
+
+
